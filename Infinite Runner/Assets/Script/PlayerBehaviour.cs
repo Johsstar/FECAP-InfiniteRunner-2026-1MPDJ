@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    //SerializeField me ajuda a manipular o valor da váriavel na Unity
+    [SerializeField] private float moveSpeed = 5;
 
+    private float moveX;
+    private float moveY;
+    
     // Update is called once per frame
     void Update()
-    {
+    { 
+        moveX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+        moveY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+        print($"Input X: {moveX};. Input Y: {moveY}");
+
+        transform.Translate(moveX, moveY, 0);
         
     }
 }
